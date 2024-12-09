@@ -17,13 +17,13 @@
             <img src="image/sate_Klatak.jpg" alt="Sate Klatak">
             <h2>Sate Klatak</h2>
             <p>Sate klatak adalah sebuah hidangan sate kambing asal Kapanéwon Pleret, Kabupaten Bantul, Yogyakarta.</p>
-            <a href="login.html" class="btn">Lihat Detail</a>
+            <a href="login.html" class="btn" data-detail="sateKlatak.html">Lihat Detail</a>
         </div>
         <div class="kuliner-item">
             <img src="image/milethek2.jpg" alt="Mi Lethek">
             <h2>Mi Lethek</h2>
             <p>Mi Lethek adalah kuliner Mi yang berasal dari Srandakan, Bantul, Yogyakarta dengan menggunakan bahan dasar tepung tapioka dan singkong.</p>
-            <a href="login2.html" class="btn">Lihat Detail</a>
+            <a href="login.html" class="btn" data-detail="milethek.html">Lihat Detail</a>
         </div>
         <div class="kuliner-item">
             <img src="image/tiwulayu2.jpg" alt="Tiwul Ayu">
@@ -47,11 +47,30 @@
             <img src="image/gudegmanggar.png" alt="Gudeg Manggar">
             <h2>Gudeg Manggar</h2>
             <p>Gudeg Manggar adalah makanan tradisional khas Bantul, Yogyakarta yang berbahan dasar manggar atau bunga kelapa.</p>
-            <a href="login6.html" class="btn">Lihat Detail</a>
+            <a href="login.html" class="btn" data-detail="gudegmanggar.html">Lihat Detail</a>
         </div>
     </section>
 
-<!-- Tombol Kembali -->
-<div class="back-button-container">
-    <a href="daerah.html" class="btn-back">Kembali ke Halaman Informasi</a>
-</div>
+    <!-- Tombol Kembali -->
+    <div class="back-button-container">
+        <a href="daerah.html" class="btn-back">Kembali ke Halaman Informasi</a>
+    </div>
+
+    <script>
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function (event) {
+                event.preventDefault();
+                const detailPage = this.getAttribute('data-detail');
+                localStorage.setItem('redirectPage', detailPage); // Simpan halaman tujuan
+                const isLoggedIn = localStorage.getItem('isLoggedIn');
+                if (isLoggedIn === 'true') {
+                    window.location.href = detailPage;
+                } else {
+                    window.location.href = 'login.html';
+                }
+            });
+        });
+    </script>    
+</body>
+</html>
+
