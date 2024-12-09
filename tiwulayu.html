@@ -45,5 +45,13 @@
     <footer>
         <p>© 2024 Kuliner Nusantara. Semua Hak Dilindungi.</p>
     </footer>
+
+    <script>
+        const isLoggedIn = localStorage.getItem('isLoggedIn');
+        if (isLoggedIn !== 'true') {
+            alert('Silakan login terlebih dahulu.');
+            window.location.href = 'login.html';
+        }
+    </script>
 </body>
 </html>
